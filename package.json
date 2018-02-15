@@ -2,16 +2,21 @@
     "name": "ng-component-seed",
     "version": "1.0.0",
     "description": "Plantilla para crear y publicar un componente Angular 2+",
-    "main": "index.js",
+    "main": "./bundles/ng-message.umd.js",
+    "module": "./esm5/ng-message.js",
+    "es2015": "./esm2015/ng-message.js",
+    "typings": "./ng-message.d.ts",
     "scripts": {
-        "build": "npm run clean && npm run build:inline && npm run build:esm2015 && npm run build:fesm2015 && npm run build:esm5 && npm run build:fesm5 && npm run build:umd",
-        "clean": "rm -rf ./tmp && rm -rf ./dist",
+        "build": "npm run clean && npm run build:inline && npm run build:esm2015 && npm run build:fesm2015 && npm run build:esm5 && npm run build:fesm5 && npm run build:umd && npm run build:min && npm run move:assets",
+        "clean": "rm -rf ./dist",
         "build:inline": "mkdir tmp && cp -r *.ts ./tmp && node inlineAssets.js",
         "build:esm2015": "ngc -p tsconfig-esm2015.json",
         "build:fesm2015": "rollup -c rollup-esm2015.conf.js",
         "build:esm5": "ngc -p tsconfig-esm5.json",
         "build:fesm5": "rollup -c rollup-esm5.conf.js",
-        "build:umd":"rollup -c rollup-umd.conf.js"
+        "build:umd": "rollup -c rollup-umd.conf.js",
+        "build:min": "uglifyjs ./dist/bundles/ng-message.umd.js -c -m -o ./dist/bundles/ng-message.umd.min.js",
+        "move:assets": "cp -r ./tmp/esm2015/*.d.ts ./tmp/esm2015/src ./tmp/esm2015/*.json ./package.json README.md ./dist && rm -rf ./tmp"
     },
     "repository": {
         "type": "git",
@@ -28,6 +33,9 @@
         "url": "https://github.com/jchinc/ng-component-seed/issues"
     },
     "homepage": "https://github.com/jchinc/ng-component-seed#readme",
+    "peerDependencies": {
+        "@angular/core": ">=4.00 <=5.2.5"
+    },
     "devDependencies": {
         "@angular/compiler": "^5.2.5",
         "@angular/compiler-cli": "^5.2.5",
@@ -35,6 +43,7 @@
         "gulp-inline-ng2-template": "^4.1.0",
         "rollup": "^0.55.5",
         "typescript": "^2.6.2",
+        "uglify-js": "^3.3.10",
         "vinyl-fs": "^3.0.2"
     },
     "dependencies": {
