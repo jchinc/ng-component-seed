@@ -4,9 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:inline": "rsync -a *.ts ./tmp/ && node inlineAssets.js"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@angular/common": "^6.1.0",
+    "@angular/core": "^6.1.0",
+    "rxjs": "^6.2.2",
+    "zone.js": "^0.8.26"
+  },
+  "devDependencies": {
+    "gulp-inline-ng2-template": "^5.0.1",
+    "vinyl-fs": "^3.0.3"
+  }
 }
