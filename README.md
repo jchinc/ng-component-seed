@@ -63,8 +63,12 @@ Crear el archivo ```.gitignore``` con contenido para omitir los archivos que no 
 ## Paquetes de desarrollo
 | Paquete | Descripción | Comando
 | ----- | ------- | ------ 
+| @angular/compiler | Compilar typescript con opciones propias de angular | `npm install --save-dev @angular/compiler`
+| @angular/compiler-cli | Cliente para compilar typescript con opciones propias de angular | `npm install --save-dev @angular/compiler-cli`
+| typescript | Compila archivos typescript. Se instala como paquete de desarrollo para permitir indicar la versión específica para el proyecto y no sea necesario utilizar la instalada globalmente | `npm install --save-dev typescript`
 | vinyl-fs | ... | `npm install --save-dev vinyl-fs`
 | gulp-inline-ng2-template | ... | `npm install --save-dev gulp-inline-ng2-template`
+| rollup | Combina todos los archivos correspondientes en uno sólo (FESM) | `npm install --save-dev rollup`
 
 # Estructura de archivos (Se crean manualmente)
 
@@ -78,8 +82,10 @@ Crear el archivo ```.gitignore``` con contenido para omitir los archivos que no 
 - package.json  : Se crea al inicializar el proyecto (paso: ...)
 - README.md     : Archivo de descripción del componente
 - public_api.ts
-- tsconfig.json : Configuración typescript para desarrollo sobre todo intellisense.
+- tsconfig.json : Configuración typescript para desarrollo (intellisense).
+- tsconfig-esm2015.json : *Configuración para proceso de construcción o generación del componente (Para Webpack, Google Closure Compiler).*
 - inlineAssets.js   : Coloca el contenido del html y css del componente en línea (incluído en la clase de componente).
+- rollup-esm2015.conf.js : Configuración para generar FESM de ES2015
 
 # Estructura de archivos (Se crean por proceso)
 
@@ -98,6 +104,23 @@ inlineAssets.js
 **Plugins**:
 vinyl-fs
 gulp-inline-ng2-template
+
+**Comando**
+npm run build:inline
+
+# Generar módulos ES2015
+
+**Configuración**
+tsconfig-esm2015.json
+
+**Descripción**
+Tanto el origen como destino es es2015, éste proceso únicamente se utiliza para agregar declaración de tipos (d.ts)
+
+**Comando**
+npm run build:esm2015
+
+**Generar FESM**
+rollup
 
 # Referencias
 [Angular Package Format](https://docs.google.com/document/d/1CZC2rcpxffTDfRDs6p1cfbmKNLA6x5O-NtkJglDaBVs): Líneas guía para crear y publicar proyectos angular. Se agrega al repositorio para tenerlo siempre a mano.

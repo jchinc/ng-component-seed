@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:inline": "rsync -a *.ts ./tmp/ && node inlineAssets.js"
+    "build:inline": "rsync -a *.ts ./tmp/ && node inlineAssets.js",
+    "build:esm2015": "ngc -p tsconfig-esm2015.json",
+    "build:fesm2015":"rollup -c rollup-esm2015.conf.js"
   },
   "keywords": [],
   "author": "",
@@ -17,7 +19,11 @@
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
+    "@angular/compiler": "^6.1.0",
+    "@angular/compiler-cli": "^6.1.0",
     "gulp-inline-ng2-template": "^5.0.1",
+    "rollup": "^0.63.5",
+    "typescript": "^2.9.2",
     "vinyl-fs": "^3.0.3"
   }
 }
