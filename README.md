@@ -69,6 +69,7 @@ Crear el archivo ```.gitignore``` con contenido para omitir los archivos que no 
 | vinyl-fs | ... | `npm install --save-dev vinyl-fs`
 | gulp-inline-ng2-template | ... | `npm install --save-dev gulp-inline-ng2-template`
 | rollup | Combina todos los archivos correspondientes en uno sólo (FESM) | `npm install --save-dev rollup`
+| uglify-js | Minimiza archivos javascript | `npm install --save-dev uglify-js`
 
 # Estructura de archivos (Se crean manualmente)
 
@@ -129,6 +130,10 @@ rollup
 - Especificar nombre de componente para ambito global (Window)
 - Indicar en archivo rollup, sección global para indicar los objetos globales con las que se identifican las referencias angular (@angular/core, etc...)
 - Indicar en archivo rollip, sección external para indicar que las librerías angular son externas y no intente localizarlos en el proyecto del componente.
+
+# Minificar módulos UMD
+- Se utiliza la librería uglify-js
+- Investigar parámetros enviados al comando -c -m -o
 
 # Referencias
 [Angular Package Format](https://docs.google.com/document/d/1CZC2rcpxffTDfRDs6p1cfbmKNLA6x5O-NtkJglDaBVs): Líneas guía para crear y publicar proyectos angular. Se agrega al repositorio para tenerlo siempre a mano.
