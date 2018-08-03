@@ -122,6 +122,14 @@ npm run build:esm2015
 **Generar FESM**
 rollup
 
+# Generar módulos ES5
+
+# Generar módulos UMD
+- Se utilizarán los archivos generados para ES5 (npm run build:esm5)
+- Especificar nombre de componente para ambito global (Window)
+- Indicar en archivo rollup, sección global para indicar los objetos globales con las que se identifican las referencias angular (@angular/core, etc...)
+- Indicar en archivo rollip, sección external para indicar que las librerías angular son externas y no intente localizarlos en el proyecto del componente.
+
 # Referencias
 [Angular Package Format](https://docs.google.com/document/d/1CZC2rcpxffTDfRDs6p1cfbmKNLA6x5O-NtkJglDaBVs): Líneas guía para crear y publicar proyectos angular. Se agrega al repositorio para tenerlo siempre a mano.
 [dillinger](https://dillinger.io): Herramienta en línea Markdown, para realización del archivo readme.md
